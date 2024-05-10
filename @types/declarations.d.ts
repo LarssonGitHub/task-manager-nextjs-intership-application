@@ -12,8 +12,8 @@ interface User {
     id: number;
     taskName: string;
     user: string;
-    startDate: Date; // Assuming startDate should be a Date object
-    estimatedEndDate: Date; // Assuming estimatedEndDate should be a Date object
+    startDate: Date;
+    estimatedEndDate: Date; 
     category: string;
     importanceLevel: number;
     taskExplanations: string;
