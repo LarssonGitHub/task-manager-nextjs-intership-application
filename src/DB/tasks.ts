@@ -1,4 +1,4 @@
-const tasks: Task[] = [
+export const tasks: Task[] = [
     {
       id: 1,
       taskName: "Project Planning",
@@ -7,7 +7,8 @@ const tasks: Task[] = [
       estimatedEndDate: new Date("2024-07-01"),
       category: "Work",
       importanceLevel: 5,
-      taskExplanations: "Plan the project timeline and resources."
+      taskExplanations: "Plan the project timeline and resources.",
+      finished: false
     },
     {
       id: 2,
@@ -17,7 +18,8 @@ const tasks: Task[] = [
       estimatedEndDate: new Date("2024-08-02"),
       category: "Design",
       importanceLevel: 4,
-      taskExplanations: "Develop the initial design concepts."
+      taskExplanations: "Develop the initial design concepts.",
+      finished: false
     },
     {
       id: 3,
@@ -27,7 +29,8 @@ const tasks: Task[] = [
       estimatedEndDate: new Date("2024-09-03"),
       category: "Development",
       importanceLevel: 3,
-      taskExplanations: "Start coding and building the project."
+      taskExplanations: "Start coding and building the project.",
+      finished: false
     }
   ];
   
