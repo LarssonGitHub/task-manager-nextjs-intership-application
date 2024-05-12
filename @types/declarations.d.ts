@@ -11,12 +11,12 @@ interface User {
   interface Task {
     id: number;
     taskName: string;
-    user: string;
+    createdBy: string;
     startDate: Date;
     estimatedEndDate: Date; 
     category: string;
     importanceLevel: number;
     taskExplanations: string;
-    finished: boolean;
+    taskIsComplete: boolean;
   };
   
