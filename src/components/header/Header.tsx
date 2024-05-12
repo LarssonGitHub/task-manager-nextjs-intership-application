@@ -11,6 +11,9 @@ export default function Header() {
   return (
     <header>
       <div>
+        <p>Welcome to your favorite task manager!!</p>
+      </div>
+      <div>
         <WelcomeMessage isAuthenticated={isAuthenticated} />
       </div>
       <div>

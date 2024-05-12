@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchTasks } from '@/lib/api/fetchTasks';
 import { calculateTaskStatuses } from '@/lib/utils/dataAltering';
 
-export default function WelcomeMessage({ isAuthenticated }: WelcomeMessageProps) {
+export default function TaskCountMessage({ isAuthenticated }: WelcomeMessageProps) {
   const [taskStatus, setTaskStatus] = useState<computeTaskStatus | null>(null);
 
   useEffect(() => {
