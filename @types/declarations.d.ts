@@ -1,7 +1,7 @@
 type Users = User[];
 interface User {
     id: number;
-    loggedIn: boolean;
+    userCategory: string;
     userName: string;
     email: string;
     password: string;
@@ -17,5 +17,6 @@ interface User {
     category: string;
     importanceLevel: number;
     taskExplanations: string;
+    finished: boolean;
   };
   
