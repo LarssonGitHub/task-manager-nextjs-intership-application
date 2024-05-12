@@ -2,24 +2,23 @@ import React from "react";
 
 interface SelectProps {
   name: string;
-  optionValues: string[];
+  values: string[];
+  handleChange: (event: React.ChangeEvent<HTMLSelectElement>, name: string) => void;
 }
 
-export default function Select({ name, optionValues }: SelectProps) {
-  if (!Array.isArray(optionValues) || !optionValues.length) {
+export default function Select({ name, values, handleChange }: SelectProps) {
+  if (!name ||!Array.isArray(values) ||!values.length) {
     return null;
   }
 
   return (
-    <>
-      <select name={name} id={name}>
-        <option value="">--Please, select {name}--</option>
-        {optionValues.map((value, index) => (
-          <option key={index} value={value}>
-            {value}
-          </option>
-        ))}
-      </select>
-    </>
+    <select onChange={(event) => handleChange(event, name)}>
+      <option value="">--{name}--</option>
+      {values.map((value, index) => (
+        <option key={index} value={value}>
+          {value}
+        </option>
+      ))}
+    </select>
   );
 }
