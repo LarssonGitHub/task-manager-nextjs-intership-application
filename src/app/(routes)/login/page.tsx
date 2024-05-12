@@ -1,9 +1,12 @@
 import React from 'react'
-
-import HelloWorld from '@/components/HelloWorld'
+import LoginForm from '@/components/forms/LoginForm'
 
 export default function page() {
   return (
-    <HelloWorld route={"login"}/>
+    <>
+    <h1>Glad to see you again! Ready to join your team?</h1>
+    <p>Please, log in to continue</p>
+    <LoginForm />
+    </>
   )
 }
