@@ -3,14 +3,20 @@
 import React, { useState, useEffect } from 'react';
 import { fetchTasks } from '@/lib/api/fetchTasks';
 import ProtectedRoute from '@/components/protectedRoutes/ProtectedRoute';
+import FilterContainer from '@/components/containers/FilterContainer';
+import LoggedUserContainer from '@/components/containers/LoggedUserContainer';
+import { fetchUsers } from '@/lib/api/fetchUsers';
 
 // Your functional component
 function Page() {
   const [tasks, setTasks] = useState<Tasks | null>(null);
+  const [users, setUsers] = useState<Users | null>(null);
 
   useEffect(() => {
-    const fetchedTasks = fetchTasks();
-    setTasks(fetchedTasks);
+    const tasks = fetchTasks();
+    setTasks(tasks);
+    const users = fetchUsers();
+    setUsers(users);
   }, []);
 
   if (!tasks) {
@@ -26,14 +32,11 @@ function Page() {
     <main>
       <section>
         <h2>Filter by:</h2>
-        <p>filter</p>
+        <FilterContainer tasks={tasks} users={users}/>
       </section>
       <h2>Users on your team</h2>
       <dl>
-        <dt>Admin</dt>
-        <dd>Jonas</dd>
-        <dt>Dev</dt>
-        <dd>Kalle anka</dd>
+        <LoggedUserContainer users={users}/>
       </dl>
       <section>
         <h1>Your pending tasks</h1>
