@@ -13,6 +13,7 @@ export default function Page({ params }: Props) {
     const [otherTasksByUser, setOtherTasksByUser] = useState<Tasks | null>(null);
     const [user, setUser] = useState<string>("User");
 
+    // TODO make this into a hook
     useEffect(() => {
         // TODO: Do a parallel fetch, if it is async in the future, work with promise.all(),
         const taskData = fetchTaskById(params.taskID);
