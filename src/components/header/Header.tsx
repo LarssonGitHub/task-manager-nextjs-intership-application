@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import WelcomeMessage from './WelcomeMessage';
+import WelcomeMessage from './TaskCountMessage';
 import LogoutButton from './LogoutButton';
 import { useGlobalContext } from '@/context/GlobalContextProvider';
 
