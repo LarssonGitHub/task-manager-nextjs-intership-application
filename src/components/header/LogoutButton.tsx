@@ -1,17 +1,18 @@
 "use client"
 
-import React from 'react'
-import { destroyToken } from '@/auth/authTokenManager'
+import React from 'react';
+import { useRouter } from 'next/navigation';
+import { destroyToken } from '@/auth/authTokenManager';
 
 export default function LogoutButton() {
-
+    const router = useRouter(); 
     const handleLogout = () => {
-        destroyToken()
-        // TODO add redirect
-        alert("Token destroyed")
-    }
+        destroyToken();
+        alert("Token should be destroyed, need further testing");
+        router.push(`/login`);
+    };
 
   return (
     <button onClick={handleLogout}>Log out</button>
-  )
+  );
 }
