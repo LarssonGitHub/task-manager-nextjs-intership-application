@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-import HelloWorld from '@/components/HelloWorld'
 
 export default function page() {
+
   return (
-    <HelloWorld route={"task details"}/>
-  )
+    <>
+    <p>
+      redirect here back to login, or do something else...
+      </p></>
+  );
 }
