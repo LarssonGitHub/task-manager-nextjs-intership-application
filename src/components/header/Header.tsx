@@ -10,14 +10,14 @@ export default function Header() {
   const logoutButton = isAuthenticated ? <LogoutButton /> : null;
   return (
     <header>
-      <div>
+      <div className='header-content'>
+    <div>
         <p>Welcome to your favorite task manager!!</p>
-      </div>
-      <div>
         <WelcomeMessage isAuthenticated={isAuthenticated} />
       </div>
       <div>
         {logoutButton}
+      </div>
       </div>
     </header>
   );

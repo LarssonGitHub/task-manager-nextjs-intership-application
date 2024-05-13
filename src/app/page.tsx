@@ -60,13 +60,17 @@ export default function Page() {
 
   return (
     <main>
+      <div id='filter-user-wrapper'>
       <section>
         <h2>Filter by:</h2>
         <small>TODO: Values are being reset, but selected option is not, will implement a function.</small>
         <FilterContainer resetOptions={resetOptions} tasks={tasks} users={users} filterQuery={filterQuery} setFilterQuery={setFilterQuery}/>
       </section>
+      <section id='logged-users-wrapper'>
       <h2>Users on your team</h2>
         <LoggedUserContainer users={users}/>
+        </section>
+        </div>
       {/* 
       TODO: if time, get the tasks you are working on.
       <section>
@@ -74,12 +78,16 @@ export default function Page() {
         {listTasksCard}
       </section> */}
       <section>
-        <h3>Your team's pending tasks</h3>
+      <h3>Your team's pending tasks</h3>
+      <div className='card-container'>
         {pendingTasks}
+      </div>
       </section>
       <section>
-        <h3>Tasks fulfilled</h3>
+      <h3>Tasks fulfilled</h3>
+      <div className='card-container'>
         {finishedTasks}
+      </div>
       </section>
     </main>
   );

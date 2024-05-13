@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #D9D9D9;
+    --secondary-color: #779fa1;
+    --border-color: rgb(16, 14, 14);
+}
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+header {
+    background: var(--primary-color);
+    padding: 1rem 0;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dl * {
+    margin-left: 0;
+}
+
+.header-content {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+}
+
+.card {
+    border: 2px solid var(--border-color);
+    padding: 1rem;
+}
+
+.card:hover,
+button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.card-large {
+    border: 2px solid var(--border-color);
+    padding: 1rem;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#filter-user-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#logged-user-card {
+    display: block;
+}
+
+#logged-users-wrapper {
+    text-align: center;
+}

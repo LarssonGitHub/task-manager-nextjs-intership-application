@@ -50,12 +50,16 @@ export default function Page({ params }: Props) {
                 <TaskCardLarge task={task} />
             </section>
             <section>
-                <h2>Pending tasks by {user}</h2>
+                <h3>Pending tasks by {user}</h3>
+                <div className='card-container'>
                 {pendingTasks}
+                </div>
             </section>
             <section>
-                <h2>Finished tasks by {user}</h2>
+                <h3>Finished tasks by {user}</h3>
+                <div className='card-container'>
                 {finishedTasks}
+                </div>
             </section>
         </main>
     );

@@ -6,7 +6,7 @@ interface TaskCardMedium {
 
 export default function TaskCardLarge({task}: TaskCardMedium) {
   return (
-    <section className="card">
+    <section className="card-large">
       <h4>{task.taskName}</h4>
       <ul>
         <li>Status: {task.taskIsComplete? 'Completed' : 'Pending'}</li>
