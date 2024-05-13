@@ -11,12 +11,44 @@ interface User {
   interface Task {
     id: number;
     taskName: string;
-    createdBy: string;
-    startDate: Date;
-    estimatedEndDate: Date; 
+    byUser: string;
+    startDate: string;
+    estimatedEndDate: string;
     category: string;
-    importanceLevel: number;
+    importanceLevel: string;
     taskExplanations: string;
     taskIsComplete: boolean;
   };
+
+  interface FilterOptions {
+    byUser: string[];
+    category: string[];
+    importanceLevel: string[];
+  }
+
+  interface TaskOptions {
+    category: string[];
+    importanceLevel: number[];
+  }
+
+  interface UserOptions {
+    byUser: string[];
+  }
+
+  interface FilterQuery {
+    date: date | null;
+    category: string | null;
+    byUser: string | null;
+    importanceLevel: string | null
+  }
+
+  interface WelcomeMessageProps {
+    isAuthenticated: boolean;
+  }
   
+  interface computeTaskStatus {
+    finished: number;
+    pending: number;
+  }
+
+ type userAfterCategory = Record<string, User[]>;
