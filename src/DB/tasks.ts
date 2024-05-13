@@ -1,36 +1,18 @@
-export const tasks: Task[] = [
-    {
-      id: 1,
-      taskName: "Project Planning",
-      user: "John Doe",
-      startDate: new Date("2024-06-01"),
-      estimatedEndDate: new Date("2024-07-01"),
-      category: "Work",
-      importanceLevel: 5,
-      taskExplanations: "Plan the project timeline and resources.",
-      finished: false
-    },
-    {
-      id: 2,
-      taskName: "Design Phase",
-      user: "Jane Smith",
-      startDate: new Date("2024-07-02"),
-      estimatedEndDate: new Date("2024-08-02"),
-      category: "Design",
-      importanceLevel: 4,
-      taskExplanations: "Develop the initial design concepts.",
-      finished: false
-    },
-    {
-      id: 3,
-      taskName: "Implementation",
-      user: "Team Lead",
-      startDate: new Date("2024-08-03"),
-      estimatedEndDate: new Date("2024-09-03"),
-      category: "Development",
-      importanceLevel: 3,
-      taskExplanations: "Start coding and building the project.",
-      finished: false
-    }
-  ];
-  
+export const tasks = [
+  { id: 1, taskName: "Planning", byUser: "John Doe", startDate: "2024-06-01", estimatedEndDate:"2024-07-01", category: "lol", importanceLevel: "5", taskExplanations: "Plan the project timeline and resources.", taskIsComplete: false },
+  { id: 2, taskName: "Designing", byUser: "Admin 1", startDate:"2024-06-01", estimatedEndDate:"2024-07-02", category: "ui", importanceLevel: "4", taskExplanations: "Design the UI components.", taskIsComplete: false },
+  { id: 3, taskName: "Coding", byUser: "Developer 2", startDate:"2024-06-03", estimatedEndDate:"2024-07-03", category: "backend", importanceLevel: "3", taskExplanations: "Develop the backend logic.", taskIsComplete: false },
+  { id: 4, taskName: "Testing", byUser: "Developer 1", startDate:"2024-06-04", estimatedEndDate:"2024-07-04", category: "testing", importanceLevel: "2", taskExplanations: "Test the application functionality.", taskIsComplete: false },
+  { id: 5, taskName: "Reviewing", byUser: "Designer 1", startDate:"2024-06-05", estimatedEndDate:"2024-07-05", category: "review", importanceLevel: "1", taskExplanations: "Review the project deliverables.", taskIsComplete: true },
+  { id: 6, taskName: "Documentation", byUser: "Tester 1", startDate:"2024-06-06", estimatedEndDate:"2024-07-06", category: "documentation", importanceLevel: "4", taskExplanations: "Create comprehensive documentation.", taskIsComplete: true },
+  { id: 7, taskName: "Deployment", byUser: "Admin 1", startDate:"2024-06-07", estimatedEndDate:"2024-07-07", category: "deployment", importanceLevel: "3", taskExplanations: "Deploy the application to production.", taskIsComplete: true },
+  { id: 8, taskName: "Bug Fixes", byUser: "Developer 1", startDate:"2024-06-08", estimatedEndDate:"2024-07-08", category: "bug fixes", importanceLevel: "2", taskExplanations: "Fix critical bugs identified during testing.", taskIsComplete: true },
+  { id: 9, taskName: "User Feedback", byUser: "Developer 2", startDate:"2024-06-09", estimatedEndDate:"2024-07-09", category: "feedback", importanceLevel: "1", taskExplanations: "Gather and analyze user feedback.", taskIsComplete: true },
+  { id: 10, taskName: "Security Audit", byUser: "Manager 1", startDate:"2024-06-10", estimatedEndDate:"2024-07-10", category: "security", importanceLevel: "5", taskExplanations: "Conduct a security audit of the application.", taskIsComplete: false },
+  { id: 11, taskName: "Documentation", byUser: "Tester 1", startDate:"2024-06-06", estimatedEndDate:"2024-07-06", category: "documentation", importanceLevel: "4", taskExplanations: "Create comprehensive documentation.", taskIsComplete: false },
+  { id: 12, taskName: "Deployment", byUser: "Admin 1", startDate:"2024-06-07", estimatedEndDate:"2024-07-07", category: "deployment", importanceLevel: "3", taskExplanations: "Deploy the application to production.", taskIsComplete: false },
+  { id: 13, taskName: "Bug Fixes", byUser: "Developer 1", startDate:"2024-06-08", estimatedEndDate:"2024-07-08", category: "bug fixes", importanceLevel: "2", taskExplanations: "Fix critical bugs identified during testing.", taskIsComplete: false },
+  { id: 14, taskName: "User Feedback", byUser: "Tester 1", startDate:"2024-06-09", estimatedEndDate:"2024-07-09", category: "feedback", importanceLevel: "1", taskExplanations: "Gather and analyze user feedback.", taskIsComplete: false },
+  { id: 15, taskName: "Security Audit", byUser: "Manager 1", startDate:"2024-06-01", estimatedEndDate:"2024-07-10", category: "security", importanceLevel: "5", taskExplanations: "Conduct a security audit of the application.", taskIsComplete: true },
+];
+
