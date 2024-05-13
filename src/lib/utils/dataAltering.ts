@@ -33,6 +33,7 @@ export function getCategoryObjects (users: User[] | null): userAfterCategory | n
 export function sortTasksAfterFilter(filterQuery: FilterQuery, tasks: Tasks): Tasks {
   return tasks.filter(item =>
     Object.entries(filterQuery)
+    // @ts-ignore
        .every(([key, value]) => item[key] === value)
 );
 }
@@ -45,7 +46,9 @@ export function getAllFilterOptions (tasks: Tasks, users: Users): FilterOptions 
     if (!total.category.includes(item.category)) {
       total.category.push(item.category);
     }
+    // @ts-ignore
     if (!total.importanceLevel.includes(item.importanceLevel)) {
+      // @ts-ignore
       total.importanceLevel.push(item.importanceLevel);
     }
     return total;
@@ -61,5 +64,6 @@ export function getAllFilterOptions (tasks: Tasks, users: Users): FilterOptions 
   }, {
     byUser: []
   });
+  // @ts-ignore
   return {...taskOptions,...userOptions };
 }

@@ -24,6 +24,7 @@ export default function LoginForm() {
       router.push(`/`);
     } catch (error) {
       console.error(error);
+      // @ts-ignore
       window.alert(`Error: ${error.message}`);
     }
   };
