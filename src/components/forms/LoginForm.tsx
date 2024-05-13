@@ -21,9 +21,10 @@ export default function LoginForm() {
       e.preventDefault();
       const loginSuccessful = await login(formData.email, formData.password);
       if (!loginSuccessful) return null
-      router.push(`/dashboard`);
+      router.push(`/`);
     } catch (error) {
-      console.error(error)
+      console.error(error);
+      window.alert(`Error: ${error.message}`);
     }
   };
 
