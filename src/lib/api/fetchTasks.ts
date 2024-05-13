@@ -1,15 +1,14 @@
 import { tasks } from "@/DB/tasks";
 
-export const fetchTasks =(): Task[] => {
-    return tasks;
-  }
+export function fetchTasks (): Tasks {
+  return tasks;
+};
 
-export const fetchTaskById = (id: string): Task => {
+export function fetchTaskById (id: string): Task {
   const convertId: number = Number(id);
-  return tasks.filter(item => item.id === convertId)[0]
-} 
+  return tasks.filter(item => item.id === convertId)[0];
+};
 
-export const fetchAllTasksByUser = (user: string): Task[] => {
-  return tasks.filter(item => item.createdBy === user)
-    }
-  
+export function fetchAllTasksByUser (user: string): Tasks {
+  return tasks.filter(item => item.byUser === user);
+};
