@@ -15,10 +15,11 @@ export default function Select({ name, values, handleChange }: SelectProps) {
     <select onChange={(event) => handleChange(event, name)}>
       <option value="">--{name}--</option>
       {values.map((value, index) => (
-        <option key={index} value={value}>
-          {value}
-        </option>
+        <option  key={index} value={value}>{value}</option>
       ))}
     </select>
   );
 }
+
+
+
