@@ -16,8 +16,8 @@ return (
     <ul>
       <li>Status: {task.taskIsComplete? 'Completed' : 'Pending'}</li>
       <li>Importance: {task.importanceLevel}</li>
-      <li>Start Date: {task.startDate.toDateString()}</li>
-      <li>End Date: {task.estimatedEndDate.toDateString()}</li>
+      <li>Start Date: {task.startDate}</li>
+      <li>End Date: {task.estimatedEndDate}</li>
     </ul>
   </section>
 );

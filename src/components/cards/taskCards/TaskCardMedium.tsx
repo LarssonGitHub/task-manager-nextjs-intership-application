@@ -1,12 +1,19 @@
 import React from 'react';
+import { useRouter } from 'next/navigation';
 
-interface TaskCardMedium {
-    task: Task;
+interface TaskCardMediumProps {
+  task: Task;
 }
 
-export default function TaskCardLarge({task}: TaskCardMedium) {
+export default function TaskCardMedium({ task }: TaskCardMediumProps) {
+  const router = useRouter();
+
+  const fetchCard = (id: number) => {
+    router.push(`/${id}`);
+  };
+
   return (
-    <section className="card">
+    <section className="card" onClick={() => fetchCard(task.id)}>
       <h4>{task.taskName}</h4>
       <ul>
         <li>Status: {task.taskIsComplete? 'Completed' : 'Pending'}</li>
@@ -15,7 +22,6 @@ export default function TaskCardLarge({task}: TaskCardMedium) {
         <li>End Date: {task.estimatedEndDate}</li>
         <li>Category: {task.category}</li>
         <li>Created By: {task.byUser}</li>
-        <li>Explanation: {task.taskExplanations}</li>
       </ul>
     </section>
   );
