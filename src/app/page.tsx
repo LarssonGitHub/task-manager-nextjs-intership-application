@@ -11,7 +11,7 @@ import TaskCardMedium from '@/components/cards/taskCards/TaskCardMedium';
 import { removePendingTasks, removeFinishedTasks } from '@/lib/utils/dataAltering';
 
 // Your functional component
-export default function Page() {
+function Page() {
   const [tasks, setTasks] = useState<Tasks | null>(null);
   const [users, setUsers] = useState<Users | null>(null);
   const [filterQuery, setFilterQuery] = useState<FilterQuery>({} as FilterQuery);
@@ -93,4 +93,4 @@ export default function Page() {
   );
 }
 
-// export default ProtectedRoute(Page);
+export default ProtectedRoute(Page);

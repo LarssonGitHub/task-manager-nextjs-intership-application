@@ -5,13 +5,14 @@ import { fetchTaskById, fetchAllTasksByUser } from '@/lib/api/fetchTasks';
 import { removePendingTasks, removeFinishedTasks } from '@/lib/utils/dataAltering';
 import TaskCardLarge from '@/components/cards/taskCards/TaskCardLarge';
 import TaskCardSmall from '@/components/cards/taskCards/TaskCardSmall';
+import ProtectedRoute from '@/components/protectedRoutes/ProtectedRoute';
 
 type Props = {
     params: { taskID: string },
     searchParams: {}
 };
 
-export default function Page({ params }: Props) {
+function Page({ params }: Props) {
     const [task, setTask] = useState<Task | null>(null);
     const [otherTasksByUser, setOtherTasksByUser] = useState<Tasks | null>(null);
     const [user, setUser] = useState<string>("User");
@@ -65,3 +66,5 @@ export default function Page({ params }: Props) {
         </main>
     );
 }
+
+export default ProtectedRoute(Page);
