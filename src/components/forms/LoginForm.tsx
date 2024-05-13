@@ -17,10 +17,14 @@ export default function LoginForm() {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const loginSuccessful = await login(formData.email, formData.password);
-    if (!loginSuccessful) return null
-    router.push(`/dashboard`);
+    try {
+      e.preventDefault();
+      const loginSuccessful = await login(formData.email, formData.password);
+      if (!loginSuccessful) return null
+      router.push(`/dashboard`);
+    } catch (error) {
+      console.error(error)
+    }
   };
 
   return (
