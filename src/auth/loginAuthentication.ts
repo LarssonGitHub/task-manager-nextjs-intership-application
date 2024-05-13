@@ -1,39 +1,59 @@
 import { fetchUsers } from "@/lib/api/fetchUsers";
 import { createToken, getSession, setSession } from "./authTokenManager";
 
-// TODO add much more strict validation, can be third party libs or condtions, like is it empty, is it a string
-
-  function userExists(users: User[], email: string):User {
-    const filteredUsers: User[] = users.filter(obj => obj.email === email);
-    if (filteredUsers.length > 1) throw new Error("This shouldn't be possible with the hard coded values!");
-    return filteredUsers[0];
-  }
-
-const passwordCheck = (userPassword: string, inputtedPassword: string) => {
-    // TODO Teacher would be annoyed if he saw this, if time, implement a decrypt function.
-    return userPassword === inputtedPassword;
+// TODO: check over these functions, clean them up, and debug them.
+const userExists = (users: Users, email: string): User | null => {
+  if (!Array.isArray(users))
+    throw new Error("Users aren't in an array");
+  const getUsers: Users = users.filter(user => user.email === email);
+  if (getUsers.length > 1)
+    throw new Error("Multiple users found with the same email address.");
+  if (getUsers.length === 0)
+    return null;
+  return getUsers[0];
 }
 
+const passwordCheck = (userPassword: string, submittedPassword: string) => {
+  if (typeof submittedPassword!== "string") throw new Error("Wrong password format");
+  return userPassword === submittedPassword;
+};
 
 const validateUser = (email: string) => {
-    const users: User[] = fetchUsers();
-    const user: User  | null = userExists(users, email);
-    if (!user) throw new Error("Wrong password or no such email exists");
-    return user;
-}
+  const users: Users = fetchUsers();
+  const user: User | null = userExists(users, email);
+  if (!user) throw new Error("Wrong password or email");
+  return user;
+};
 
 const validatePassword = (user: User, password: string) => {
-    const passwordMatch: boolean = passwordCheck(user.password, password)
-    if (!passwordMatch) throw new Error("Wrong password or no such email exists");
-    return passwordMatch;
-}
+  const passwordMatch: boolean = passwordCheck(user.password, password);
+  if (!passwordMatch) throw new Error("Wrong password or email");
+  return passwordMatch;
+};
 
-export const login = async (email: string, password: string): Promise<boolean> => {
-    const user: User = validateUser(email);
-    validatePassword(user, password);
-    const token = await createToken(user)
-    setSession(token)
-    console.log("token set", token)
-    console.log("session got", await getSession())
-    return true
-}
+const validateLoginInputs = (password: string, email: string): boolean => {
+  if (!password) throw new Error("Password required");
+  if (!email) throw new Error("Email required");
+  if (!email.includes("@")) throw new Error("Invalid email string");
+  return true;
+};
+
+const createSession = async (user: User) => {
+  const token = await createToken(user);
+  setSession(token);
+  console.log("token set", token);
+  console.log("session got", await getSession());
+  return true;
+};
+
+export async function login (email: string, submittedPassword: string): Promise<boolean> {
+  const inputs: boolean = validateLoginInputs(submittedPassword, email);
+  if (!inputs) throw new Error("Invalid inputs");
+  const user: User = validateUser(email);
+  if (!user) throw new Error("Couldn't get a user");
+  const password: boolean = validatePassword(user, submittedPassword);
+  if (!password) throw new Error("Problem validating password");
+  const createdSession = await createSession(user);
+  if (!createdSession) throw new Error("Couldn't create a session");
+  return true;
+};
