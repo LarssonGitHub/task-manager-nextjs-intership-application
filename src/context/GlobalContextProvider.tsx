@@ -22,7 +22,9 @@ const GlobalContext = createContext<ContextProps>({
 });
 
 export const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // TODO YOU MUST CHANGE THIS TO FALSE, AND MAKE GLOBAL GLOBALCONTEXTPROVIDER PRESISTANT.
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  console.log("global ran")
   return (
     <GlobalContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
       {children}
