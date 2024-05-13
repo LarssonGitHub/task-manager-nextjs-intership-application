@@ -20,6 +20,7 @@ export default function Page({ params }: Props) {
     // TODO implement error handling
     useEffect(() => {
         const taskData = fetchTaskById(params.taskID);
+        if (!taskData) return
         const tasksByUser = fetchAllTasksByUser(taskData.byUser);
         setUser(taskData.byUser);
         setTask(taskData);
