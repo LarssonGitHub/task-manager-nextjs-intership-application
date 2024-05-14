@@ -12,7 +12,7 @@ export default function GenericInput({inputs, handleChange}: InputProps) {
       }
   return (
     <div>
-    <label htmlFor={inputs}>Email:</label>
+    <label htmlFor={inputs}>{inputs}:</label>
     <input
     type={inputs}
     id={inputs}
