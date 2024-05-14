@@ -10,7 +10,6 @@ import { sortTasksAfterFilter } from '@/lib/utils/dataAltering';
 import TaskCardMedium from '@/components/cards/taskCards/TaskCardMedium';
 import { removePendingTasks, removeFinishedTasks } from '@/lib/utils/dataAltering';
 
-// Your functional component
 function Page() {
   const [tasks, setTasks] = useState<Tasks | null>(null);
   const [users, setUsers] = useState<Users | null>(null);
@@ -63,7 +62,7 @@ function Page() {
       <div id='filter-user-wrapper'>
       <section>
         <h2>Filter by:</h2>
-        <small>TODO: Values are being reset, but selected option is not, will implement a function.</small>
+        {/* TODO: Values are being reset, but selected option is not, will implement a function. */}
         <FilterContainer resetOptions={resetOptions} tasks={tasks} users={users} filterQuery={filterQuery} setFilterQuery={setFilterQuery}/>
       </section>
       <section id='logged-users-wrapper'>
