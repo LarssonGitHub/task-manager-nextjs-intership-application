@@ -8,12 +8,11 @@ export function handleError(error: unknown) {
       return;
     } 
     window.alert('An unknown error occurred, check logs.');
-  }
+}
 
-  export function handleTokenVerifyingError(error: unknown) {
-  destroyToken()
-  console.log(error)
-  alert("Token and authentication couldn't be verified, check error logs for more info. Redirecting and destroying session....")
-  window.location.href = "/login"
-  }
-
+export function handleTokenVerifyingError(error: unknown) {
+  destroyToken();
+  console.log(error);
+  alert("Token and authentication couldn't be verified, check error logs for more info. Redirecting and destroying session....");
+  window.location.href = "/login";
+}
