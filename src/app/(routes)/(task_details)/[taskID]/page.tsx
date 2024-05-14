@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
 import { fetchTaskById, fetchAllTasksByUser } from '@/lib/api/fetchTasks';
 import { removePendingTasks, removeFinishedTasks } from '@/lib/utils/dataAltering';
 import TaskCardLarge from '@/components/cards/taskCards/TaskCardLarge';
@@ -19,13 +20,25 @@ function Page({ params }: Props) {
 
     // TODO is it worth to make this into a hook?
     // TODO implement error handling
-    useEffect(() => {
+    const setTaskCard = (task: Task) => {
+        setUser(task.byUser);
+        setTask(task);
+    }
+    
+    const setTaskCards = (tasks: Tasks) => {
+        setOtherTasksByUser(tasks);
+    }
+
+    const fetchTaskAfterParams = () => {
         const taskData = fetchTaskById(params.taskID);
-        if (!taskData) return
+        if (!taskData) return;
         const tasksByUser = fetchAllTasksByUser(taskData.byUser);
-        setUser(taskData.byUser);
-        setTask(taskData);
-        setOtherTasksByUser(tasksByUser);
+        setTaskCard(taskData)
+        setTaskCards(tasksByUser);
+    }
+    
+    useEffect(() => {
+        fetchTaskAfterParams();
     }, []);
 
     if (!task ||!otherTasksByUser) {
@@ -54,13 +67,13 @@ function Page({ params }: Props) {
             <section>
                 <h3>Pending tasks by {user}</h3>
                 <div className='card-container'>
-                {pendingTasks}
+                    {pendingTasks}
                 </div>
             </section>
             <section>
                 <h3>Finished tasks by {user}</h3>
                 <div className='card-container'>
-                {finishedTasks}
+                    {finishedTasks}
                 </div>
             </section>
         </main>
