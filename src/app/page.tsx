@@ -62,6 +62,7 @@ function Page() {
       <div id='filter-user-wrapper'>
       <section>
         <h2>Filter by:</h2>
+        <small>Filter by one condition, or filter by many conditions!</small>
         {/* TODO: Values are being reset, but selected option is not, will implement a function. */}
         <FilterContainer resetOptions={resetOptions} tasks={tasks} users={users} filterQuery={filterQuery} setFilterQuery={setFilterQuery}/>
       </section>
