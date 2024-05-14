@@ -7,7 +7,7 @@ import { useGlobalContext } from '@/context/GlobalContextProvider';
 
 export default function Header() {
   const { isAuthenticated, setIsAuthenticated } = useGlobalContext();
-  const logoutButton = isAuthenticated ? <LogoutButton /> : null;
+  const logoutButton = isAuthenticated ? <LogoutButton setIsAuthenticated={setIsAuthenticated} /> : null;
   return (
     <header>
       <div className='header-content'>
