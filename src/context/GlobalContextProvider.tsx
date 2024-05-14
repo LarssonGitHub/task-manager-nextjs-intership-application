@@ -1,14 +1,9 @@
 "use client";
 
-import React from "react";
-import {
-  createContext,
-  useContext,
-  useState,
-} from "react";
+import React, { createContext, useContext, useState } from "react";
 
 interface GlobalContextProviderProps {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }
 
 interface ContextProps {
@@ -22,9 +17,7 @@ const GlobalContext = createContext<ContextProps>({
 });
 
 export const GlobalContextProvider = ({ children }: GlobalContextProviderProps) => {
-  // TODO YOU MUST CHANGE THIS TO FALSE, AND MAKE GLOBAL GLOBALCONTEXTPROVIDER PRESISTANT.
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
-  console.log("global ran")
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
     <GlobalContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
       {children}
@@ -33,3 +26,5 @@ export const GlobalContextProvider = ({ children }: GlobalContextProviderProps) 
 };
 
 export const useGlobalContext = () => useContext(GlobalContext);
+
+// refactor: Cleaned up ununsed and unseary code.

@@ -6,9 +6,9 @@ import { destroyToken } from '@/auth/authTokenManager';
 
 export default function LogoutButton() {
     const router = useRouter(); 
+    
     const handleLogout = () => {
         destroyToken();
-        alert("Token should be destroyed, need further testing");
         router.push(`/login`);
     };
 

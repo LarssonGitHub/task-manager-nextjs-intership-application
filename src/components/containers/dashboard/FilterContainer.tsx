@@ -19,14 +19,18 @@ export default function FilterContainer({
 }: FilterContainerProps) {
   const [filterOptions, setFilterOptions] = useState<FilterOptions | null>(null);
 
-  useEffect(() => {
+  const getFilterOptions = () => {
     if (!tasks ||!users) return;
     const options = getAllFilterOptions(tasks, users);
     setFilterOptions(options);
+  }
+
+  useEffect(() => {
+    getFilterOptions();
   }, []);
 
   return (
-      <FilterOptionsContainer
+    <FilterOptionsContainer
       resetOptions={resetOptions}
       filterOptions={filterOptions}
       filterQuery={filterQuery}

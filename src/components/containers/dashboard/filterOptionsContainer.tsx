@@ -34,7 +34,8 @@ export default function FilterOptionsContainer({resetOptions, filterOptions, fil
       {/* TODO check if GenericInputElement component is of use here */}
       <input type="date" id="startDate" name="startDate" onChange={(e)=> updateFilterState(e, "startDate")} />
       <button onClick={resetOptions}>Reset</button>
-      <button onClick={() => console.log(filterQuery)}>state</button>
+      {/* Used for testing state, can be removed */}
+      {/* <button onClick={() => console.log(filterQuery)}>state</button> */}
     </div>
   );
 }

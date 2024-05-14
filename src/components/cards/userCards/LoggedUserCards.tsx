@@ -1,13 +1,12 @@
 import React from 'react';
 
 interface LoggedUserCardsProps {
-  categorizedUsers: Record<string, any[]>; // Assuming userAfterCategory is a record of arrays
+  categorizedUsers: Record<string, any[]>; 
 }
 
 export default function LoggedUserCards({ categorizedUsers }: LoggedUserCardsProps) {
   if (!categorizedUsers) return null;
 
-  // Correctly define loggedUserCard as an array of JSX elements
   const loggedUserCard = Object.keys(categorizedUsers || {}).map((category, index) => (
     <dl key={index}>
       <dt>{category}:</dt>

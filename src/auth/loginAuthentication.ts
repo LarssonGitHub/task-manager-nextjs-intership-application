@@ -1,5 +1,5 @@
 import { fetchUsers } from "@/lib/api/fetchUsers";
-import { createToken, getSession, setSession } from "./authTokenManager";
+import { createToken, setSession } from "./authTokenManager";
 
 // TODO: check over these functions, clean them up, and debug them.
 const userExists = (users: Users, email: string): User | null => {
@@ -41,8 +41,6 @@ const validateLoginInputs = (password: string, email: string): boolean => {
 const createSession = async (user: User) => {
   const token = await createToken(user);
   setSession(token);
-  console.log("token set", token);
-  console.log("session got", await getSession());
   return true;
 };
 

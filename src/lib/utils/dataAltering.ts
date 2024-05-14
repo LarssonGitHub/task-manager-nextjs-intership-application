@@ -18,7 +18,7 @@ export function calculateTaskStatuses(tasks: Tasks): computeTaskStatus {
 }
 
 
-export function getCategoryObjects (users: User[] | null): userAfterCategory | null {
+export function getCategoryUserByCategory (users: User[] | null): userAfterCategory | null {
   if (!users) return null;
   return users.reduce((total: userAfterCategory, user: User) => {
     const key = user.userCategory;
