@@ -1,4 +1,5 @@
 import { SignJWT, jwtVerify } from "jose";
+import { handleTokenVerifyingError } from "@/lib/utils/handleError";
 
 // TODO use crypto to set key instead, much more secure, also, put secretKey in an environment variable!
 const secretKey = "secret";
@@ -12,7 +13,7 @@ export async function encrypt(payLoad: User) {
   return await new SignJWT(payLoad)
    .setProtectedHeader({ alg: "HS256" })
    .setIssuedAt()
-   .setExpirationTime("60 sec from now")
+   .setExpirationTime('3d')
    .sign(key);
 }
 
@@ -21,8 +22,7 @@ export async function decrypt(token: string) {
     const { payload } = await jwtVerify(token, key, { algorithms: ['HS256'] });
     return payload;
   } catch (error) {
-    // TODO set custom error to destroy everything if token is not ok.
-    throw new Error('Token is invalid');
+    handleTokenVerifyingError(error)
   };
 }
 
@@ -33,7 +33,7 @@ export async function createToken(user: User) {
 }
 
 export function setSession(session: string) {
-  const expires = new Date(Date.now() + 10 * 10000000).toUTCString();
+  const expires = new Date(Date.now() + 10000 * 10000000).toUTCString();
   // TODO: Once backend is set up, use HttpOnly
   // const cookieString = `session=${session}; path=/; expires=${expires}; HttpOnly`;
   document.cookie = "session=" + encodeURIComponent(session) + "; path=/; expires=" + expires;
@@ -52,10 +52,9 @@ export async function getSession() {
 }
 
 export async function validateToken() {
-  // TODO remove in production, and make sure it returns a boolean for the protectedRoute
-  return true;
   const token = getTokenFromCookies("session");
   await decrypt(token);
+  return true
 }
 
 export function destroyToken() {
@@ -64,3 +63,4 @@ export function destroyToken() {
     document.cookie = Cookies[i] + "=; expires=" + new Date(0).toUTCString();
   }
 }
+

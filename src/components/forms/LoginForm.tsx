@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import GenericInput from '../inputs/GenericInput';
 import { login } from '@/auth/loginAuthentication';
+import { handleError } from '@/lib/utils/handleError';
 
 export default function LoginForm() {
   const router = useRouter(); 
@@ -14,23 +15,29 @@ export default function LoginForm() {
 
   const updateFormData = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({...formData, [e.target.name]: e.target.value });
-  };
+  }; 
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const validateLogin = async (email:string, password:string) => {
+    return await login(email, password);
+  }
+
+  const redirectUserTpDashboard = () => {
+    router.push(`/`);
+  }
+
+  const handleLoginSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
-      const loginSuccessful = await login(formData.email, formData.password);
-      if (!loginSuccessful) return null
-      router.push(`/`);
+      const loginSuccessful = await validateLogin(formData.email, formData.password);
+      if (!loginSuccessful) return null;
+      redirectUserTpDashboard();
     } catch (error) {
-      console.error(error);
-      // @ts-ignore
-      window.alert(`Error: ${error.message}`);
+      handleError(error)
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleLoginSubmit}>
       <GenericInput inputs={"email"} handleChange={updateFormData} />
       <GenericInput inputs={"password"} handleChange={updateFormData} />
       <button type="submit">Log in now!</button>
