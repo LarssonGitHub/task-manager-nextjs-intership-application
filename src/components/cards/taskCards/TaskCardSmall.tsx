@@ -8,7 +8,7 @@ interface TaskCardMedium {
 export default function TaskCardSmall({ task }: TaskCardMedium) {
 const router = useRouter(); 
 const fetchCard = (id: number) => {
-  router.push(`/${id}`);
+window.location.href = `/${id}`
 };
 return (
   <section className="card" onClick={() => fetchCard(task.id)}>

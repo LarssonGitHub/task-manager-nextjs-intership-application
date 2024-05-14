@@ -9,7 +9,7 @@ export default function TaskCardMedium({ task }: TaskCardMediumProps) {
   const router = useRouter();
 
   const fetchCard = (id: number) => {
-    router.push(`/${id}`);
+    window.location.href = `/${id}`
   };
 
   return (
